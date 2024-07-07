@@ -8,19 +8,11 @@ function onWatchAdvertisementsButtonClick() {
     log('> Requested ' + device.name);
 
     device.addEventListener('advertisementreceived', (event) => {
-      log('Advertisement received.');
-      log('  Device Name: ' + event.device.name);
       log('  Device ID: ' + event.device.id);
-      log('  RSSI: ' + event.rssi);
-      log('  TX Power: ' + event.txPower);
-      log('  UUIDs: ' + event.uuids);
-      event.manufacturerData.forEach((valueDataView, key) => {
-        logDataView('Manufacturer', key, valueDataView);
+       event.manufacturerData.forEach((valueDataView, key) => {
+      logDataView('Manufacturer', key, valueDataView);
       });
-      event.serviceData.forEach((valueDataView, key) => {
-        logDataView('Service', key, valueDataView);
       });
-    });
 
     log('Watching advertisements from "' + device.name + '"...');
     return device.watchAdvertisements();  
